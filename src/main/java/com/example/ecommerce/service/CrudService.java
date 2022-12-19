@@ -25,7 +25,7 @@ public class CrudService {
     }
 
     public List<CrudEntity> searchParam(int age){
-        return entityManager.createQuery("select m from sample_member m where age > :age", CrudEntity.class)
+        return entityManager.createQuery("select m from ecommercedb m where age > :age", CrudEntity.class)
                 .setParameter("age", age)
                 .getResultList();
     }

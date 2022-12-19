@@ -11,8 +11,8 @@ import javax.persistence.Table;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name="sample_member")
-@Table(name= "sample_member")
+@Entity(name="ecommercedb")
+@Table(name= "ecommercedb")
 @Setter
 @Getter
 public class CrudEntity {
