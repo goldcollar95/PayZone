@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -44,7 +45,7 @@ public class CrudController {
         if (crudEntityRepository.findById(name).isPresent()) {
             return "동일한 이름이 이미 있습니다";
         } else {
-            CrudEntity entity = CrudEntity.builder().name(name).age(age).bulid();
+            CrudEntity entity = CrudEntity.builder().name(name).age(age).build();
             crudEntityRepository.save(entity);
             return "이름 : " + name + " 나이 : " + age + "으로 추가 되었습니다.";
         }
@@ -59,4 +60,13 @@ public class CrudController {
                 return name + "의 나이름 " + age + "로 변경 완료";
             }
         }
+//    @GetMapping("delete")
+//    public String deleteMember(@RequestParam(value = "name") String name){
+//        if(crudEntityRepository.findById(name).isEmpty()){
+//            return "입력한 " + name + "이 존재하지 않습니다";
+//        } else {
+//            crudEntityRepository.delete(CrudEntity entity = CrudEntity.builder().name(name).build());
+//            return name + " 삭제 완료";
+//        }
+//    }
 }
