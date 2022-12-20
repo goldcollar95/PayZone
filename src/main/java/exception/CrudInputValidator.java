@@ -1,4 +1,4 @@
-package validator;
+package exception;
 
 public class CrudInputValidator {
 
