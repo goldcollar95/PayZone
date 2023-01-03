@@ -65,8 +65,14 @@ public class CrudController {
 
     @PostMapping("log-test")
     public void logTest(){
+
         LOGGER.error("Error Log");
+        LOGGER.trace("Trace Log");
+        LOGGER.debug("Debug Log");
+        LOGGER.info("Info Log");
+        LOGGER.warn("Warn Log");
     }
+
 
     @PostMapping("/exception")
     public void exceptionTest() throws Exception{
@@ -79,7 +85,7 @@ public class CrudController {
 //        responseHeaders.add(HttpHeaders.CONTENT_TYPE, "application/json");
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
 
-        LOGGER.info(e.getLocalizedMessage());
+        LOGGER.info(e.getMessage());
         LOGGER.info("Controller 내 ExceptionHandler 호출");
 
         Map<String, String>map = new HashMap<>();
