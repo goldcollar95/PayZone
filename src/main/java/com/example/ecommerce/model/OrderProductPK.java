@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import java.io.Serializable;
 @Embeddable
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "order")
-public interface OrderProductPK implements Serializable {
+public class OrderProductPK implements Serializable {
     private static final long serialVersionUID = 476151177562655457L;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
