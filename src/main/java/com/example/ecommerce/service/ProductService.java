@@ -2,7 +2,10 @@ package com.example.ecommerce.service;
 
 import com.example.ecommerce.model.Product;
 
-public class ProductService {
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+public interface ProductService {
 
     @NotNull Iterable<Product> getAllProducts();
 
