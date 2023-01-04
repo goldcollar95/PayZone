@@ -5,6 +5,7 @@ import com.example.ecommerce.exception.ResourceNotFoundException;
 import com.example.ecommerce.model.Order;
 import com.example.ecommerce.model.OrderProduct;
 import com.example.ecommerce.model.OrderStatus;
+import com.example.ecommerce.service.OrderService;
 import com.example.ecommerce.service.ProductService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -25,8 +27,9 @@ public class OrderController {
     ProductService productService;
     OrderService prderService;
     OrderProductService orderProductService;
+    private OrderService orderService;
 
-    public OrderController(ProductService productService, OrderService prderService, OrderProductService orderProductService) {
+    public OrderController(ProductService productService, OrderService orderService, OrderProductService orderProductService) {
         this.productService = productService;
         this.prderService = prderService;
         this.orderProductService = orderProductService;
