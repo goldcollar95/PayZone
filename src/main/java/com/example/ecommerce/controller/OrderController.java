@@ -5,6 +5,7 @@ import com.example.ecommerce.exception.ResourceNotFoundException;
 import com.example.ecommerce.model.Order;
 import com.example.ecommerce.model.OrderProduct;
 import com.example.ecommerce.model.OrderStatus;
+import com.example.ecommerce.service.OrderProductService;
 import com.example.ecommerce.service.OrderService;
 import com.example.ecommerce.service.ProductService;
 import org.springframework.http.HttpHeaders;
@@ -25,13 +26,13 @@ import java.util.stream.Collectors;
 public class OrderController {
 
     ProductService productService;
-    OrderService prderService;
+    OrderService orderService;
     OrderProductService orderProductService;
-    private OrderService orderService;
+
 
     public OrderController(ProductService productService, OrderService orderService, OrderProductService orderProductService) {
         this.productService = productService;
-        this.prderService = prderService;
+        this.orderService = orderService;
         this.orderProductService = orderProductService;
     }
     //모든 주문건들이 조회가 될수 있도록 list형태로 만들어주려한다.
@@ -49,7 +50,7 @@ public class OrderController {
         order.setStatus(OrderStatus.PAID.name());
         order = this.orderService.create(order);
 
-        List<orderProduct> orderProducts = new ArrayList<>();
+        List<OrderProduct> orderProducts = new ArrayList<>();
         for(OrderProductDto dto : formDtos){
             orderProducts.add(orderProductService.create(new OrderProduct(order, productService.getProduct(dto
                     .getProduct()
@@ -63,10 +64,10 @@ public class OrderController {
         String url = ServletUriComponentsBuilder
                 .fromCurrentServletMapping()
                 .path("/orders/{id}")
-                .bildAndExpand(order.getId())
+                .buildAndExpand(order.getId())
                 .toString();
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", uri);
+        headers.add("Location", url);
 
         return new ResponseEntity<>(order, headers, HttpStatus.CREATED);
     }
