@@ -1,5 +1,6 @@
 package com.example.ecommerce;
 
+import com.example.ecommerce.model.Product;
 import com.example.ecommerce.service.ProductService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
